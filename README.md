@@ -17,10 +17,16 @@ team-expense-tracker/
 ├── utils.test.js           # Tests for utils.js (Node's built-in test runner)
 ├── package.json            # Defines `npm test`
 ├── .gitignore
+├── docs/
+│   └── TASKS.md            # Every task for the team, round by round
 └── .github/
-    └── workflows/
-        └── test.yml        # CI: runs the tests on every PR and every push to main
+    ├── workflows/
+    │   └── test.yml        # CI: runs the tests on every PR and every push to main
+    ├── ISSUE_TEMPLATE/     # Templates for new issues (feature / bug)
+    └── pull_request_template.md
 ```
+
+📋 **All tasks are listed in [docs/TASKS.md](docs/TASKS.md).** Find the one assigned to you there.
 
 **Why split `utils.js` from `app.js`?** Anything that touches the page (`document`, buttons, inputs) goes in `app.js`. Anything that's just calculation or validation goes in `utils.js`, so it can be tested without a browser.
 
@@ -95,7 +101,7 @@ Then open a Pull Request on GitHub:
 
 - **Base:** `main` ← **Compare:** your branch
 - **Title:** a short summary of the change
-- **Description:** what you did, how to check it, and `Closes #<issue-number>` so the issue closes when the PR merges
+- **Description:** GitHub fills it with the PR template. Complete each section and tick the checklist. Keep `Closes #<issue-number>` so the issue closes when the PR merges
 - **Reviewer:** request a review from a teammate
 
 ### 6. Review and merge
