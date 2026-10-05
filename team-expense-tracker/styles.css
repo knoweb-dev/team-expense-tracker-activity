@@ -1,0 +1,13 @@
+/* Team Expense Tracker styles */
+
+/* TODO (Issue #1): Style the page layout, the form, and the expense list. */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+}

@@ -1,0 +1,13 @@
+{
+  "name": "team-expense-tracker",
+  "version": "1.0.0",
+  "description": "A small browser app for tracking shared team expenses.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
