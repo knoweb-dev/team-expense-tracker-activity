@@ -32,6 +32,3 @@ export function calculateTotal(expenses) {
 export function formatCurrency(amount) {
   return `$${Number(amount).toFixed(2)}`;
 }
-git add .
-git commit -m "Fix bug in calculateTotal and add regression test"
-git push -u origin fix/7-fix-bug
