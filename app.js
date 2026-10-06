@@ -1,14 +1,43 @@
-// DOM wiring for the expense tracker.
-// Reads the form, keeps the list of expenses, and renders it using helpers from utils.js.
 import { validateExpense, calculateTotal, formatCurrency } from './utils.js';
 
 const expenses = [];
 
-// TODO (Issue #3): Listen for the form's submit event, build an expense object
-// { description, amount, category }, check it with validateExpense, add it to
-// `expenses`, then call render().
+const form = document.querySelector('#expense-form');
 
-// TODO (Issue #3): Show every expense in #expense-list and the total
-// (calculateTotal + formatCurrency) in #expense-total.
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  const description = document.querySelector('#description').value.trim();
+  const amount = Number(document.querySelector('#amount').value);
+  const category = document.querySelector('#category').value;
+
+  const expense = {
+    description: description,
+    amount: amount,
+    category: category
+  };
+
+  if (!validateExpense(expense)) {
+    alert('Please enter a valid expense.');
+    return;
+  }
+
+  expenses.push(expense);
+  form.reset();
+  render();
+});
+
 function render() {
+  const list = document.querySelector('#expense-list');
+  const total = document.querySelector('#expense-total');
+
+  list.innerHTML = '';
+
+  expenses.forEach((expense) => {
+    const item = document.createElement('li');
+    item.textContent = `${expense.description} - ${expense.category} - ${formatCurrency(expense.amount)}`;
+    list.appendChild(item);
+  });
+
+  total.textContent = `Total: ${formatCurrency(calculateTotal(expenses))}`;
 }
