@@ -46,3 +46,7 @@ test('formatCurrency formats to two decimal places', () => {
   assert.equal(formatCurrency(0), '$0.00');
   assert.equal(formatCurrency(99.99), '$99.99');
 });
+test('calculateTotal correctly adds all items including the last one', () => {
+  const expenses = [{ amount: 10 }, { amount: 20 }, { amount: 30 }];
+  assert.equal(calculateTotal(expenses), 60);
+});
