@@ -11,6 +11,7 @@ form.addEventListener('submit', (event) => {
   const amount = Number(document.querySelector('#amount').value);
   const category = document.querySelector('#category').value;
 
+
   const expense = {
     description: description,
     amount: amount,
