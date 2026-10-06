@@ -135,3 +135,18 @@ section {
     font-size: 1.6rem;
   }
 }
+/* Delete button style for Task 4 */
+.delete-btn {
+  background-color: #e74c3c;
+  color: #ffffff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.delete-btn:hover {  background-color: #c0392b;
+}

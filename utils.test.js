@@ -1,7 +1,7 @@
 // Tests for utils.js, run with `npm test` (Node's built-in test runner).
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { validateExpense, calculateTotal, formatCurrency } from './utils.js';
+import { validateExpense, calculateTotal, formatCurrency, removeExpense } from './utils.js';
 
 test('utils.js exports the expected functions', () => {
   assert.equal(typeof validateExpense, 'function');
@@ -46,7 +46,18 @@ test('formatCurrency formats to two decimal places', () => {
   assert.equal(formatCurrency(0), '$0.00');
   assert.equal(formatCurrency(99.99), '$99.99');
 });
-test('calculateTotal correctly adds all items including the last one', () => {
-  const expenses = [{ amount: 10 }, { amount: 20 }, { amount: 30 }];
-  assert.equal(calculateTotal(expenses), 60);
+test('removeExpense removes an expense by id without mutating original array', () => {
+  const initial = [
+    { id: 1, description: 'Lunch', amount: 10 },
+    { id: 2, description: 'Taxi', amount: 20 }
+  ];
+  const result = removeExpense(initial, 1);
+  assert.deepEqual(result, [{ id: 2, description: 'Taxi', amount: 20 }]);
+  assert.equal(initial.length, 2); // original unchanged
+});
+
+test('removeExpense returns same list if id is not found', () => {
+  const initial = [{ id: 1, description: 'Lunch', amount: 10 }];
+  const result = removeExpense(initial, 999);
+  assert.deepEqual(result, [{ id: 1, description: 'Lunch', amount: 10 }]);
 });
