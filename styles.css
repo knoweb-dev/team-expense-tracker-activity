@@ -26,6 +26,7 @@ header h1 {
 
 main {
   max-width: 600px;
+  width: 100%;
   margin: 0 auto;
   background: #ffffff;
   padding: 25px;
@@ -56,7 +57,7 @@ section {
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 1rem;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 #expense-form input:focus,
@@ -70,7 +71,7 @@ section {
   width: 100%;
   padding: 12px;
   background-color: #3498db;
-  color: white;
+  color: #ffffff;
   border: none;
   border-radius: 6px;
   font-size: 1rem;
@@ -118,4 +119,19 @@ section {
   background: #eef2f3;
   padding: 12px;
   border-radius: 6px;
+}
+
+/* Phone-width responsiveness */
+@media (max-width: 480px) {
+  body {
+    padding: 12px;
+  }
+
+  main {
+    padding: 16px;
+  }
+
+  header h1 {
+    font-size: 1.6rem;
+  }
 }
