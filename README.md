@@ -6,6 +6,17 @@ This repo is a team exercise in the **pull request workflow**. Nobody pushes to 
 
 ---
 
+## Features (Version 1.0.0)
+
+- 📝 **Add Expenses:** Log team expenses with description, positive amount, and category (`Food`, `Travel`, `Supplies`, `Other`).
+- 💵 **Live Total:** Automatically calculates and formats the total team spending in real-time.
+- 🗑️ **Delete Expenses:** Easily remove individual expenses from the list.
+- 🔍 **Filter by Category:** Filter expenses by category or view all at once.
+- 💾 **Automatic Storage:** Saves expenses directly in `localStorage` so data stays even after refreshing or closing the browser.
+- 📱 **Mobile Responsive:** Clean, modern layout that looks great on both phones and computers.
+
+---
+
 ## Project structure
 
 ```
