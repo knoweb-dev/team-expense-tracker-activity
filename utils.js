@@ -37,3 +37,9 @@ export function removeExpense(expenses, id) {
   if (!Array.isArray(expenses)) return [];
   return expenses.filter(expense => expense.id !== id);
 }
+export function filterByCategory(expenses, category) {
+  if (!Array.isArray(expenses)) return [];
+  if (category === 'All') return expenses;
+
+  return expenses.filter((expense) => expense.category === category);
+}

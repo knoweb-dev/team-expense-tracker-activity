@@ -1,8 +1,11 @@
-import { validateExpense, calculateTotal, formatCurrency } from './utils.js';
+import { validateExpense, calculateTotal, formatCurrency, filterByCategory } from './utils.js';
 
 const expenses = [];
 
 const form = document.querySelector('#expense-form');
+const categoryFilter = document.querySelector('#category-filter');
+
+categoryFilter.addEventListener('change', render);
 
 form.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -31,14 +34,16 @@ form.addEventListener('submit', (event) => {
 function render() {
   const list = document.querySelector('#expense-list');
   const total = document.querySelector('#expense-total');
+  const selectedCategory = categoryFilter.value;
+  const visibleExpenses = filterByCategory(expenses, selectedCategory);
 
   list.innerHTML = '';
 
-  expenses.forEach((expense) => {
+  visibleExpenses.forEach((expense) => {
     const item = document.createElement('li');
     item.textContent = `${expense.description} - ${expense.category} - ${formatCurrency(expense.amount)}`;
     list.appendChild(item);
   });
 
-  total.textContent = `Total: ${formatCurrency(calculateTotal(expenses))}`;
+  total.textContent = `Total: ${formatCurrency(calculateTotal(visibleExpenses))}`;
 }
