@@ -1,8 +1,7 @@
 // Tests for utils.js, run with `npm test` (Node's built-in test runner).
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { validateExpense, calculateTotal, formatCurrency, removeExpense } from './utils.js';
-
+import { validateExpense, calculateTotal, formatCurrency, removeExpense, filterByCategory } from './utils.js';
 test('utils.js exports the expected functions', () => {
   assert.equal(typeof validateExpense, 'function');
   assert.equal(typeof calculateTotal, 'function');
@@ -60,4 +59,33 @@ test('removeExpense returns same list if id is not found', () => {
   const initial = [{ id: 1, description: 'Lunch', amount: 10 }];
   const result = removeExpense(initial, 999);
   assert.deepEqual(result, [{ id: 1, description: 'Lunch', amount: 10 }]);
+});
+test('filterByCategory returns expenses in the selected category', () => {
+  const expenses = [
+    { description: 'Lunch', amount: 12, category: 'Food' },
+    { description: 'Taxi', amount: 20, category: 'Travel' },
+    { description: 'Coffee', amount: 5, category: 'Food' }
+  ];
+
+  assert.deepEqual(filterByCategory(expenses, 'Food'), [
+    { description: 'Lunch', amount: 12, category: 'Food' },
+    { description: 'Coffee', amount: 5, category: 'Food' }
+  ]);
+});
+
+test('filterByCategory returns all expenses when category is All', () => {
+  const expenses = [
+    { description: 'Lunch', amount: 12, category: 'Food' },
+    { description: 'Taxi', amount: 20, category: 'Travel' }
+  ];
+
+  assert.deepEqual(filterByCategory(expenses, 'All'), expenses);
+});
+
+test('filterByCategory returns an empty list when nothing matches', () => {
+  const expenses = [
+    { description: 'Lunch', amount: 12, category: 'Food' }
+  ];
+
+  assert.deepEqual(filterByCategory(expenses, 'Travel'), []);
 });

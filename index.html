@@ -41,6 +41,14 @@
     <!-- Task 1: Expense List and Total -->
     <section id="list-section">
       <h2>Expenses</h2>
+      <label for="category-filter">Filter by category:</label>
+<select id="category-filter">
+  <option value="All">All</option>
+  <option value="Food">Food</option>
+  <option value="Travel">Travel</option>
+  <option value="Supplies">Supplies</option>
+  <option value="Other">Other</option>
+</select>
       <ul id="expense-list"></ul>
       <div id="expense-total">Total: $0.00</div>
     </section>
