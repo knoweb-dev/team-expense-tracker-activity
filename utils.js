@@ -32,3 +32,8 @@ export function calculateTotal(expenses) {
 export function formatCurrency(amount) {
   return `$${Number(amount).toFixed(2)}`;
 }
+// Remove an expense by id without mutating the original array
+export function removeExpense(expenses, id) {
+  if (!Array.isArray(expenses)) return [];
+  return expenses.filter(expense => expense.id !== id);
+}
